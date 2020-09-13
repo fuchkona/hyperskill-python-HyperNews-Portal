@@ -1,0 +1,24 @@
+{% extends "news/base.html" %}
+{% block content %}
+<h2>Hyper news</h2>
+<div>
+    <form method="GET">
+        <label>
+            Search
+            <input type="text" name="q" value="{{ search }}">
+        </label>
+    </form>
+</div>
+{% for date, posts in grouped_by_date.items %}
+<h4>{{ date }}</h4>
+<ul>
+    {% for post in posts %}
+    <li><a href="/news/{{ post.link }}/">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
+<a target="_blank" href="/news/">Home</a>
+<br>
+<a target="_blank" href="/news/create/">Add post</a>
+{% endblock %}
+
